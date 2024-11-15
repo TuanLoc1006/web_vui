@@ -106,19 +106,48 @@
             box-shadow: 0px 6px 12px rgba(255, 105, 180, 0.7);
         }
 
-        /* Image Popup Style */
+        /* Thêm viền cute cho ảnh */
         .popup-img {
             position: absolute;
             width: 80px;
             opacity: 0;
             transform: scale(0.5);
             transition: transform 1s ease, top 1s ease, left 1s ease;
+            border-radius: 15px;
+            /* Viền bo tròn cho ảnh */
+            border: 3px solid #ff85c0;
+            /* Màu viền nhẹ nhàng */
+            box-shadow: 0px 4px 8px rgba(255, 105, 180, 0.5);
+            /* Hiệu ứng đổ bóng nhẹ */
         }
 
         .show {
             opacity: 1;
             transform: scale(1.5);
         }
+
+        /* Đảm bảo ảnh tải lên cũng có viền đẹp */
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-container label {
+            background-color: #ff85c0;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .upload-container label:hover {
+            background-color: #ff6fa6;
+            box-shadow: 0px 6px 12px rgba(255, 105, 180, 0.7);
+        }
+
 
         /* Cute heart message */
         #heartMessage {
@@ -242,4 +271,3 @@
         document.addEventListener('touchstart', moveImages);
     </script>
 </body>
-
