@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surprice</title>
+    <title>Surprise</title>
     <style>
         /* Basic Reset */
         * {
@@ -203,21 +203,34 @@
             }
         });
 
-        // Handle image upload and show uploaded images
+        // Handle image upload and show uploaded images with effect
         imageUpload.addEventListener('change', (event) => {
             const files = event.target.files;
-            const uploadContainer = document.querySelector('.upload-container');
             Array.from(files).forEach((file) => {
                 const imgElement = document.createElement('img');
-                imgElement.classList.add('popup-img', 'uploaded-img', 'hidden');
+                imgElement.classList.add('popup-img');
                 imgElement.src = URL.createObjectURL(file);
-                uploadContainer.appendChild(imgElement);
+
+                // Set random position for the uploaded image
+                imgElement.style.left = `${Math.random() * 80}vw`;
+                imgElement.style.top = `${Math.random() * 50}vh`;
+
+                // Append to body and show with effect
+                document.body.appendChild(imgElement);
+
+                // Apply effect after a short delay
+                setTimeout(() => {
+                    imgElement.classList.add('show');
+                }, 100);
+
+                // Clean up the URL object after the image loads
+                imgElement.onload = () => URL.revokeObjectURL(imgElement.src);
             });
         });
 
         // Function to make images move to random positions on tap/click
         function moveImages() {
-            const images = document.querySelectorAll('.popup-img, .uploaded-img');
+            const images = document.querySelectorAll('.popup-img');
             images.forEach(img => {
                 img.style.left = `${Math.random() * 80}vw`;
                 img.style.top = `${Math.random() * 50}vh`;
@@ -230,4 +243,3 @@
     </script>
 </body>
 
-</html>
